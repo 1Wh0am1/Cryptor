@@ -9,14 +9,14 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    crypt.cpp \
-    filemanager.cpp \
+    Crypt/crypt.cpp \
+    FileManager/filemanager.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    crypt.h \
-    filemanager.h \
+    Crypt/crypt.h \
+    FileManager/filemanager.h \
     mainwindow.h
 
 FORMS += \

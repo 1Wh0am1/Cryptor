@@ -114,14 +114,14 @@ void MainWindow::on_maskCheckBox_stateChanged()
 // The method responsible for the values of the path selection of the output directory
 void MainWindow::on_outputToolButton_clicked()
 {
-    QString file_name = QFileDialog::getExistingDirectory(this, "Select a directory", "E:\\Test");
+    QString file_name = QFileDialog::getExistingDirectory(this, "Select a directory", "C:\\");
     ui->outputLineEdit->setText(file_name);
 }
 
 // The method responsible for the values of the input file path selection
 void MainWindow::on_selectToolButton_clicked()
 {
-    QString file_name = QFileDialog::getOpenFileName(this, "Select a file", "E:\\Test");
+    QString file_name = QFileDialog::getOpenFileName(this, "Select a file", "C:\\");
     ui->selectLineEdit->setText(file_name);
 }
 

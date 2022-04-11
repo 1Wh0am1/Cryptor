@@ -11,8 +11,8 @@
 #include <QTimer>
 #include <QMessageBox>
 
-#include "crypt.h"
-#include "filemanager.h"
+#include "Crypt/crypt.h"
+#include "FileManager/filemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
