@@ -89,12 +89,12 @@ void MainWindow::on_startPushButton_clicked()
 
         fm.write_File(crypt.encryption());
 
-         if (ui->inputCheckBox->checkState())
-         {
-            fm.remove_Input();
-         }
+        if (ui->inputCheckBox->checkState())
+        {
+           fm.remove_Input();
+        }
 
-         fm.close_Files();
+        fm.close_Files();
     }
 }
 

@@ -29,20 +29,19 @@ void FileManager::select_Output_File(QString output)
 void FileManager::unique_Output()
 {
     QDateTime time;
-    QString fileName = "";
-    fileName = outputFile_.fileName() + "/output";
-    fileName += " {" + QString::number(time.currentSecsSinceEpoch()) + "}";
-    fileName += ".txt";
-    outputFile_.setFileName(fileName);
+    QString name = inputFile_.fileName();
+    QStringList parts = name.split("/");
+    QString lastBit = parts.at(parts.size()-1);
+    outputFile_.setFileName(outputFile_.fileName() + "/" + "[OUTPUT {" + QString::number(time.currentSecsSinceEpoch()) + "}] " + lastBit);
 }
 
 // Default name for the output file
 void FileManager::default_Output()
 {
-    QString fileName = "";
-    fileName = outputFile_.fileName() + "/output";
-    fileName += ".txt";
-    outputFile_.setFileName(fileName);
+    QString name = inputFile_.fileName();
+    QStringList parts = name.split("/");
+    QString lastBit = parts.at(parts.size()-1);
+    outputFile_.setFileName(outputFile_.fileName() + "/" + "[OUTPUT] " + lastBit);
 }
 
 // Reading from a file.
@@ -54,20 +53,10 @@ QByteArray FileManager::read_File()
 
 /* Writing to selected file.
  * Overload method
- * Type: QString */
-void FileManager::write_File(QString data)
-{
-    QTextStream out(&outputFile_);
-    out << data;
-}
-
-/* Writing to selected file.
- * Overload method
  * Type: QByteArray */
 void FileManager::write_File(QByteArray data)
 {
-    QTextStream out(&outputFile_);
-    out << data;
+    outputFile_.write(data);
 }
 
 // Deleting the input file after finishing working with it.
@@ -79,9 +68,9 @@ void FileManager::remove_Input()
 // Checking files for the possibility of interacting with them.
 bool FileManager::check_Streams()
 {
-    if (inputFile_.open(QFile::ReadOnly | QFile::Text))
+    if (inputFile_.open(QFile::ReadOnly))
     {
-        if (outputFile_.open(QFile::WriteOnly | QFile::Text))
+        if (outputFile_.open(QFile::WriteOnly))
         {
             return true;
         }
